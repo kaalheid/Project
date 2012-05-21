@@ -18,4 +18,36 @@ Een emulator maakt het mogelijk om een ander of verouderd computersysteem in een
 
 Dit is echter voor discussie vatbaar, omdat een emulatie in ruimere zin 'het simuleren van een omgeving bovenop de huidige omgeving' kan betekenen. In dit geval is Wine dus wel een emulator en was de vorige betekenis van de naam eigenlijk beter gekozen.
 \newpage
+\section{Ontstaan van Wine}
+In 1993 is Wine opgericht door Bob Amstadt en Eric Youngdale, zodat Windows programma's ook konden uitgevoerd worden onder Linux. Het is gebaseerd op 2 programma's van Sun Microsystems: Wabi en Public Windows Initiative\footnote{Interface die gecreëerd is om een neutraal, platform onafhankelijke standaard op te richting die niet bestuurd wordt door Microsoft}. Oorspronkelijk richtte Wine zich alleen op de 16-bit software, maar sinds 2010 wordt er vooral gekeken naar 32- en 64 bit applicaties. Sinds 1994 leidt Alexandre Juilliard het project.
+\subsection{Moeilijkheden bij het programmeren}
+Doordat de documentatie van de Windows API vaak onvolledig en onjuist was, heeft het voor de programmeurs veel tijd gekost om dit te maken. Microsoft documenteert zijn 32-bit applicaties zeer goed, maar op sommige vlakken, zoals bij extensies en protocollen, hebben ze geen specifieke Microsoft regel. Dit maakt het voor programmeurs lastig omdat Wine ervoor moet zorgen dat dit alles op een ander besturingssysteem wel perfect werkt.
+\subsection{Verschillende versies}
+De eerste officiële versie, versie 0.9, werd gelanceerd op 25 oktober 2005 en versie 1.0 werd gelanceerd op 17 juni 2008, na 15 jaar programmeerwerk. 
+Sinds versie 1.4 gelanceerd is, zijn er heel wat verbeteringen aangebracht, onder andere vele grafische functies, verschillen in audio en ondersteuning voor applicaties zoals Microsoft Office 2010.
+\newpage
+\section{Functionaliteit}
+De programmeurs die instaan voor het Direct3D gedeelte van Wine, hebben nieuwe functies zoals pixel shaders\footnote{Onderzoeken de kleur en attributen van een pixel, waardoor er speciale effecten aan deze pixel gegeven kunnen worden.} ontworpen. Wine kan bijhorende DLL's ook gebruiken waardoor de functionaliteit verhoogt, maar hiervoor is een licentie van Microsoft nodig. Dit is niet nodig als de DLL's ontworpen zijn samen met de applicatie zelf.
+
+Winecfg is een GUI die ontworpen is om Wine op een gemakkelijke manier te configurereren zonder dat men parameters moet veranderen in het register. Moest dit toch nodig zijn, kan men de nodige parameters handmatig veranderen in een bijgeleverde register editor die lijkt op regedit van Windows. Wine heeft ook standaard programma's als Kladblok, Wordpad en Internet Explorer aan boord.
+
+\subsection{Terugkerende compatibiliteit}
+Wine heeft een zeer goede terugkerende compatibiliteit. Het kan verschillende Windows programma's nabootsen, teruggaande tot Windows versie 2.0. Sinds Wine v1.3 is er Windows 1.0 en 2.0 wel uit genomen. Je kan nog steeds "Windows 2.0" selecteren, maar Wine zal gewoon niet reageren dan.
+
+De terugkerende compatibiliteit van Wine is beter als die van Windows. Windows verplicht gebruikers er ooit toe om programma updates te doen bij het vernieuwen van het besturingssysteem, en dat doet Wine niet, omdat Wine een ingebouwde 'compatibility mode' heeft. Zo kan Wine bijvoorbeeld 16 bit programma's draaien op een 64 bit besturingssysteem. 64-bit versies van Windows daarentegen kunnen geen 16 bit programma's draaien.
+
+\subsection{Third-party software}
+Third-party software zijn programma's die niet gemaakt zijn door Wine en ook niet door Microsoft. Ze hebben een andere manier van benadering nodig. In dat geval moeten bijvoorbeeld sommige Windows DLL's handmatig geconfigureerd worden. Dit zijn dingen die Wine niet echt ondersteunt. Het is voor gebruikers zeer ongemakkelijk om dergelijke programma's aan het werken te krijgen. De bedoeling van dit soort programma's is ook om gebruikt te worden buiten Wine en dergelijke programma's om. Toch zijn er al enkele applicaties die compatibel zijn met Wine. Dit zijn enkele voorbeelden (en zijn te vinden op de Wine wiki): 
+\begin{itemize}
+	\item CrossOver
+	\item Bordeaux: Wine GUI configuratie manager dat winelib applicaties kan laten werken, en ondersteunt ook de installatie van sommige third-party software en de installatie van games
+	\item Winetricks: script om sommige basis componenten die typisch van Microsoft zijn, te laten werken onder Wine
+	\item QT4Wine
+	\item Wine-Doors
+	\item IEs4Linux
+	\item PlayOnLinux
+	\item Wineskin
+\end{itemize}
+\newpage
+
 \end{document}
