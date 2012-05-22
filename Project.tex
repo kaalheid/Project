@@ -150,4 +150,111 @@ Om Mutt te installeren, geven we in de terminal 'sudo apt-get install mutt' in. 
 \end{center}
 	\caption{Mutt installeren: eerste stap}
 \end{figure}
+
+Als een venster verschijnt voor de eerste configuratie, druk dan op het toetsenbord op de 'pijl naar rechts' toets en vervolgens op enter. Vervolgens vraagt Mutt wat voor soort configuratie we willen. Zorg dat 'Internet site' geselecteerd is en navigeer dan naar OK. Druk op enter om te bevestigen.
+
+Als er gevraagd wordt om een 'system mail name' in te geven, geef dan het achterste gedeelte van het gebruikte e-mailadres in. In dit voorbeeld zullen we met Gmail werken. We geven dus gmail.com in. Hierna zal de installatie verder gaan.
+\begin{figure} [h]
+\begin{center}
+	\includegraphics[scale=0.5]{MuttServerMailName}
+\end{center}
+	\caption{Server mail name invoeren voor Mutt}
+\end{figure}
+
+De volgende stap is het aanmaken van mappen waar Mutt headers, bodies en certificaten van mails opslaat. Dit gebeurt door volgende commando's als de installatie voltooid is:
+
+
+mkdir -p ~/.mutt/cache/headers
+
+
+mkdir ~/.mutt/cache/bodies
+
+
+touch ~/.mutt/certificates
+
+\begin{figure} [!h]
+\begin{center}
+	\includegraphics[scale=0.5]{MuttHeadersCertificaten}
+\end{center}
+	\caption{Locatie van headers, bodies en certificaten aangeven}
+\end{figure}
+
+Als dit gebeurd is, sla dan onderstaande configuratie op in je home directory met als naam .muttrc (het . teken niet vergeten!).
+
+\vspace{10mm}
+
+\# A basic .muttrc for use with Gmail
+
+\# Change the following six lines to match your Gmail account details
+
+
+set imap\_user = "YOUR.EMAIL@gmail.com"
+set imap\_pass = "PASSWORD"
+set smtp\_url = "smtp://YOUR.EMAIL@smtp.gmail.com:587/"
+set smtp\_pass = "PASSWORD"
+set from = "YOUR.EMAIL@gmail.com"
+set realname = "YOUR NAME"
+
+\# Change the following line to a different editor you prefer.
+
+
+set editor = "nano"
+
+
+\# Basic config, you can leave this as is
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set imap\_check\_subscribed
+set hostname = gmail.com
+set mail\_check = 120
+set timeout = 300
+set imap\_keepalive = 300
+set postponed = "+[GMail]/Drafts"
+set record = "+[GMail]/Sent Mail"
+set header\_cache=\textasciitilde{}/.mutt/cache/headers
+set message\_cachedir=\textasciitilde{}/.mutt/cache/bodies
+set certificate\_file=\textasciitilde{}/.mutt/certificates
+set move = no
+set include
+set sort = 'threads'
+set sort\_aux = 'reverse-last-date-received'
+set auto\_tag = yes
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr\_order Date From To Cc
+alternative\_order text/plain text/html *
+auto\_view text/html
+bind editor  complete-query
+bind editor \^{}T complete
+bind editor  noop 
+
+
+\# Gmail-style keyboard shortcuts
+macro index,pager y "unset trash\textbackslash{}n " "Gmail archive message"
+macro index,pager d "set trash=\textbackslash{}"imaps://imap.googlemail.com/[GMail]/Bin\textbackslash{}"\textbackslash{}n " "Gmail delete message"
+macro index,pager gi "=INBOX" "Go to inbox"
+macro index,pager ga "=[Gmail]/All Mail" "Go to all mail"
+macro index,pager gs "=[Gmail]/Starred" "Go to starred messages"
+macro index,pager gd "=[Gmail]/Drafts" "Go to drafts"
+
+\vspace{10mm}
+
+Als dit gebeurd is, verander dan de eerste zes regels zodat de configuratie van je eigen Gmailaccount gebeurd is. Als je het paswoord veld blanco laat, wordt er geen paswoord onthouden en moet dit telkens ingegeven worden bij het opstarten van Mutt. Dit is veel veiliger.
+
+\begin{figure} [h]
+\begin{center}
+	\includegraphics[scale=0.5]{MuttConfiguratie}
+\end{center}
+	\caption{Inloggegevens voor Mutt ingeven}
+\end{figure}
+
+Mutt is nu volledig ge\"{\i}nstalleerd en is klaar voor gebruik. Om Mutt op te starten, geef 'mutt' in in de terminal. Druk op een toets om verder te gaan als dit gevraagd wordt.
+
+\begin{figure} [!ht]
+\begin{center}
+	\includegraphics[scale=0.5]{MuttKlaar}
+\end{center}
+	\caption{Mutt is correct ge\"{\i}nstalleerd en klaar voor gebruik}
+\end{figure}
 \end{document}
