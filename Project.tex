@@ -5,7 +5,6 @@
 \author{Tom Geerits}
 \date{Schooljaar 2011-2012}
 \maketitle
-\newpagegi
 \newpage
 \tableofcontents
 \newpage
@@ -37,7 +36,8 @@ Wine heeft een zeer goede terugkerende compatibiliteit. Het kan verschillende Wi
 De terugkerende compatibiliteit van Wine is beter als die van Windows. Windows verplicht gebruikers er ooit toe om programma updates te doen bij het vernieuwen van het besturingssysteem, en dat doet Wine niet, omdat Wine een ingebouwde 'compatibility mode' heeft. Zo kan Wine bijvoorbeeld 16 bit programma's draaien op een 64 bit besturingssysteem. 64-bit versies van Windows daarentegen kunnen geen 16 bit programma's draaien.
 
 \subsection{Third-party software}
-Third-party software zijn programma's die niet gemaakt zijn door Wine en ook niet door Microsoft. Ze hebben een andere manier van benadering nodig. In dat geval moeten bijvoorbeeld sommige Windows DLL's handmatig geconfigureerd worden. Dit zijn dingen die Wine niet echt ondersteunt. Het is voor gebruikers zeer ongemakkelijk om dergelijke programma's aan het werken te krijgen. De bedoeling van dit soort programma's is ook om gebruikt te worden buiten Wine en dergelijke programma's om. Toch zijn er al enkele applicaties die compatibel zijn met Wine. Dit zijn enkele voorbeelden (en zijn te vinden op de Wine wiki): 
+Third-party software zijn programma's die niet gemaakt zijn door Wine en ook niet door Microsoft. Ze hebben een andere manier van benadering nodig. In dat geval moeten bijvoorbeeld sommige Windows DLL's handmatig geconfigureerd worden. Dit zijn dingen die Wine niet echt ondersteunt. Het is voor gebruikers zeer ongemakkelijk om dergelijke programma's aan het werken te krijgen. De bedoeling van dit soort programma's is ook om gebruikt te 
+worden buiten Wine en dergelijke programma's om. Toch zijn er al enkele applicaties die compatibel zijn met Wine. Dit zijn enkele voorbeelden (en zijn te vinden op de Wine wiki): 
 \begin{itemize}
 	\item CrossOver
 	\item Bordeaux: Wine GUI configuratie manager dat winelib applicaties kan laten werken, en ondersteunt ook de installatie van sommige third-party software en de installatie van games
@@ -68,5 +68,86 @@ Als we nu in het zoekveld van de 'Dash home' Wine ingeven, komt het programma da
 	\includegraphics[scale=0.5]{Zoeken}
 \end{center}
 	\caption{Wine is correct ge\"{\i}nstalleerd en klaar voor gebruik}
+\end{figure}
+\newpage
+\section{Vooroordelen over Wine}
+\subsection{Wine is traag omdat het een emulator is}
+Wine wordt vaak vergeleken met echte emulators als VMWare, VirtualBox,... en daardoor wordt vaak gedacht dat Wine taag is in gebruik. Dit is echter niet waar. Echte emulators bootsen echte besturingssystemen na en gebruiken daardoor CPU, maar dat heeft Wine niet nodig en daardoor is Wine niet traag.
+\subsection{Wine kan niet gebruikt worden zonder Windows}
+Dit is niet waar. Wine zorgt ervoor dat alle onderdelen van Windows ge\"{\i}mplementeerd worden en Windows dus overbodig wordt in Linux of Mac OS. 
+
+Het is tot nu toe perfect mogelijk om zonder Windows te werken met Wine, maar omdat er nog veel werk is aan Wine zelf, is het voor sommige programma's wel nodig om sommige Windows componenten te gebruiken die Wine zelf nog niet kan bieden. Het aantal programma's dat Windows nog nodig heeft, vermindert met elke nieuwe release...
+\subsection{Wine is alleen voor Linux gemaakt}
+Dit is volledig incorrect. Wine wordt het meest gebruikt onder Linux, maar wordt ook ondersteund onder MacOS X, FreeBSD en Solaris.
+
+Doordat de meeste ontwikkelaars werken onder Linux, kan het wel gebeuren dat er sneller een nieuwere release is onder Linux dan onder een niet-Linux platform. Dit wordt vaak wel opgelost in de eerstvolgende release voor het juiste programma. 
+\subsection{Wine zal nooit volledig klaar zijn}
+Grote software projecten zijn nooit volledig af, er komen telkens nieuwe releases uit, en dit om \cite{Wikipedia} het programma up to date te houden. Wine heeft wel telkens een flinke achterstand doordat bij elke nieuwe Windows release ook nieuwe API oproepen horen, waardoor het telkens opnieuw zoeken is naar de juiste manier om het programma te laten werken.
+\section{Ondersteunde programma's}
+\subsection{Games die zonder problemen werken}
+
+\begin{center}
+\begin{table} [h]
+\begin{tabular}{ | l | p{10cm} |}
+	\hline
+    Programma & Uitleg \\ \hline
+   	 World of Warcraft 4.3.x & Online spel waarbij de speler een eigen 	personage cre\"{e}ert en in een virtuele wereld vrijwel vrij kan rondlopen. \\ 			\hline
+    The Sims 3 & Videospel waarbij de speler een eigen familie kan cre\"{e}ren. \\ \hline
+    Counterstrike & First-person shooter videospel. 2 groepen spelers moeten het tegen mekaar opnemen door gehele tegenpartijen uit te schakelen of 			doelstellingen te behalen. \\
+    \hline
+\end{tabular}
+\caption{Voorbeelden van programma's die zonder problemen werken met Wine}
+\end{table}
+\end{center}
+
+\subsection{Games en programma's die mits enige configuratie werken}
+
+\begin{center}
+\begin{table} [h]
+\begin{tabular}{ | l | p{10cm} |}
+	\hline
+    Programma & Uitleg \\ \hline
+   	 EVE Online 7.3x & Online multiplayer spel dat zich afspeelt in een science-fiction wereld. Spelers zijn astronauten die op zoek moeten gaan naar verschillende voorwerpen. \\ 			\hline
+    Steam official release &  Programma om games tegen betaling te downloaden en deze vervolgens te kunnen spelen. Men betaalt dus niet langer voor de CD of DVD met daarop de software, maar voor het recht om het spel te spelen.\\ \hline
+    Battlefield 2.1x &  Online first person shoorter spel met 64 spelers in twee teams. Het is ook mogelijk om tanks, boten, vliegtuigen en helikopters te gebruiken.\\
+    \hline
+\end{tabular}
+\caption{Voorbeelden van programma's die zonder problemen werken met Wine}
+\end{table}
+\end{center}
+
+\subsection{Programma's en games waar nog fouten in zitten}
+\begin{center}
+\begin{table} [h]
+\begin{tabular}{ | l | p{10cm} |}
+	\hline
+    Programma & Uitleg \\ \hline
+   	 Photoshop CS3 & Programma om foto's te bewerken. \\ 			\hline
+    Call of Duty 4 & Videospel dat zich afspeelt in de Tweede Wereldoorlog waarin de speler meevecht met de geallieerden voor het Amerikaanse leger, het Engelse leger en het Rode leger van de Sovjet-Unie. \\ \hline
+    AutoCAD 2008 & Programma dat ontwikkeld is om technische tekeningen te maken. Het biedt ook de mogelijkheid om 3D-modellen te ontwikkelen.\\
+    \hline
+\end{tabular}
+\caption{Voorbeelden van programma's en games die nog niet volledig compatibel zijn met Wine}
+\end{table}
+\end{center}
+\newpage
+\bibliography{ref}
+\cite{Wikipedia}
+\cite{exoplanetwebsite}
+\newpage
+\section{Bijlage 1: installatie van Mutt}
+Mutt is een opensource en tekstgebaseerde e-mailclient en is beschikbaar voor Linux en Unix.
+
+Mutt kan niet zelfstandig e-mails versturen, hiervoor moet het steunen op een Mailserver.
+
+Mutt ondersteunt POP3, IMAP en andere mailprotocollen. Mutt is ook erg configureerbaar. Doordat Mutt weinig geheugen vereist en niet-grafisch is, is het programma geschikt voor het gebruik op eenvoudige systemen en via trage verbindingen. Omwille van de krachtige configuratiemogelijkheden is het programma populair in Unixomgevingen.
+
+\subsection{Installatie van Mutt in Ubuntu}
+Om Mutt te installeren, geven we in de terminal 'sudo apt-get install mutt' in. De download en installatie start.
+\begin{figure} [h]
+\begin{center}
+	\includegraphics[scale=0.5]{MuttEersteStap}
+\end{center}
+	\caption{Mutt installeren: eerste stap}
 \end{figure}
 \end{document}
