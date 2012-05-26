@@ -16,7 +16,7 @@
 \section{Wat is Wine?}
 Wine is een opensourceprogramma om software die voor Windows gemaakt is, ook te gebruiken op andere besturingssystemen. Dit wordt vaak gebruikt voor Mac of Linux. Wine implementeert zowel 16- als 32 bit Windowsprogramma's, maar kan Windows zelf niet uitvoeren.
 \subsection{De naam 'Wine'}
-De originele betekenis van 'Wine' was de acroniem voor '\textbf{WIN}dows \textbf{E}mulator. \\
+De originele betekenis van 'Wine' was de acroniem voor '\textbf{WIN}dows \textbf{E}mulator'. \\
 Deze betekenis is later echter veranderd omdat men dit programma wou onderscheiden van andere 'echte' emulators. Nu betekent 'Wine' niets anders dan \textit{Wine Is Not An Emulator}.
 Een emulator maakt het mogelijk om een ander of verouderd computersysteem in een eigen omgeving na te bootsen. Denk maar aan VirtualBox of VMWare.
 
@@ -87,7 +87,7 @@ Dit is volledig incorrect. Wine wordt het meest gebruikt onder Linux, maar wordt
 
 Doordat de meeste ontwikkelaars werken onder Linux, kan het wel gebeuren dat er sneller een nieuwere release is onder Linux dan onder een niet-Linux platform. Dit wordt vaak wel opgelost in de eerstvolgende release voor het juiste programma. 
 \subsection{Wine zal nooit volledig klaar zijn}
-Grote software projecten zijn nooit volledig af, er komen telkens nieuwe releases uit, en dit om \cite{Wikipedia} het programma up to date te houden. Wine heeft wel telkens een flinke achterstand doordat bij elke nieuwe Windows release ook nieuwe API oproepen horen, waardoor het telkens opnieuw zoeken is naar de juiste manier om het programma te laten werken.
+Grote software projecten zijn nooit volledig af, er komen telkens nieuwe releases uit, en dit om het programma up to date te houden. Wine heeft wel telkens een flinke achterstand doordat bij elke nieuwe Windows release ook nieuwe API oproepen horen, waardoor het telkens opnieuw zoeken is naar de juiste manier om het programma te laten werken.
 \section{Ondersteunde programma's}
 \subsection{Games die zonder problemen werken}
 
@@ -153,7 +153,7 @@ Om Mutt te installeren, geven we in de terminal 'sudo apt-get install mutt' in. 
 	\caption{Mutt installeren: eerste stap}
 \end{figure}
 
-Als een venster verschijnt voor de eerste configuratie, druk dan op het toetsenbord op de 'pijl naar rechts' toets en vervolgens op enter. Vervolgens vraagt Mutt wat voor soort configuratie we willen. Zorg dat 'Internet site' geselecteerd is en navigeer dan naar OK. Druk op enter om te bevestigen.
+Als een venster verschijnt voor de eerste configuratie, druk dan op het toetsenbord op de 'pijl naar rechts' toets en vervolgens op enter. Hierna vraagt Mutt wat voor soort configuratie we willen. Zorg dat 'Internet site' geselecteerd is en navigeer dan naar OK. Druk op enter om te bevestigen.
 
 Als er gevraagd wordt om een 'system mail name' in te geven, geef dan het achterste gedeelte van het gebruikte e-mailadres in. In dit voorbeeld zullen we met Gmail werken. We geven dus gmail.com in. Hierna zal de installatie verder gaan.
 \begin{figure} [h]
@@ -354,6 +354,32 @@ git push -u origin master
 Let op: het eerste commando dient slechts eenmaal ingevoerd te worden per keer dat de computer connectie heeft met GitHub.
 
 Git is nu geconfigureerd en klaar voor gebruik.
+\newpage
+\section{Bash script aanmaken}
+Het onderstaande bash script zorgt ervoor dat er een email wordt verstuurd met een persoonlijke aanspreking, en deze PDF als bijlage. De naam, voornaam en aanspreektitel worden in het onderwerp mee verstuurd.
+
+\#!/bin/bash
+
+echo -e "Geef de aanspreektitel:"
+
+read Aanspreektitel
+
+echo -e "Wat is de voornaam?"
+
+read Voornaam
+
+echo -e "Wat is de achternaam?"
+
+read Achternaam
+
+echo -m "Wat is het emailadres?"
+
+read Emailadres
+
+echo | mutt -s "\$Aanspreektitel \$Achternaam \$Voornaam" \$Emailadres -a ~/Project.pdf
+
+
+Eerst worden alle nodige variabelen ingevoerd en vervolgens wordt dit via mail verzonden naar de begunstigde.
 \newpage
 \nocite{*}
 \bibliographystyle{plain}
