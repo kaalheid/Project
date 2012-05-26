@@ -1,5 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{graphicx}
+\usepackage{cite}
+\usepackage{url}
 \begin{document}
 \title{Linux project: Wine}
 \author{Tom Geerits}
@@ -7,6 +9,9 @@
 \maketitle
 \newpage
 \tableofcontents
+\newpage
+\listoffigures
+\listoftables
 \newpage
 \section{Wat is Wine?}
 Wine is een opensourceprogramma om software die voor Windows gemaakt is, ook te gebruiken op andere besturingssystemen. Dit wordt vaak gebruikt voor Mac of Linux. Wine implementeert zowel 16- als 32 bit Windowsprogramma's, maar kan Windows zelf niet uitvoeren.
@@ -26,7 +31,7 @@ De eerste officiële versie, versie 0.9, werd gelanceerd op 25 oktober 2005 en v
 Sinds versie 1.4 gelanceerd is, zijn er heel wat verbeteringen aangebracht, onder andere vele grafische functies, verschillen in audio en ondersteuning voor applicaties zoals Microsoft Office 2010.
 \newpage
 \section{Functionaliteit}
-De programmeurs die instaan voor het Direct3D gedeelte van Wine, hebben nieuwe functies zoals pixel shaders\footnote{Onderzoeken de kleur en attributen van een pixel, waardoor er speciale effecten aan deze pixel gegeven kunnen worden.} ontworpen. Wine kan bijhorende DLL's ook gebruiken waardoor de functionaliteit verhoogt, maar hiervoor is een licentie van Microsoft nodig. Dit is niet nodig als de DLL's ontworpen zijn samen met de applicatie zelf.
+De programmeurs die instaan voor het Direct3D gedeelte van Wine, hebben nieuwe functies zoals pixel shaders \footnote{Onderzoeken de kleur en attributen van een pixel, waardoor er speciale effecten aan deze pixel gegeven kunnen worden.} ontworpen. Wine kan bijhorende DLL's ook gebruiken waardoor de functionaliteit verhoogt, maar hiervoor is een licentie van Microsoft nodig. Dit is niet nodig als de DLL's ontworpen zijn samen met de applicatie zelf.
 
 Winecfg is een GUI die ontworpen is om Wine op een gemakkelijke manier te configurereren zonder dat men parameters moet veranderen in het register. Moest dit toch nodig zijn, kan men de nodige parameters handmatig veranderen in een bijgeleverde register editor die lijkt op regedit van Windows. Wine heeft ook standaard programma's als Kladblok, Wordpad en Internet Explorer aan boord.
 
@@ -131,9 +136,6 @@ Grote software projecten zijn nooit volledig af, er komen telkens nieuwe release
 \end{table}
 \end{center}
 \newpage
-\bibliography{ref}
-\cite{Wikipedia}
-\cite{exoplanetwebsite}
 \newpage
 \section{Bijlage 1: installatie van Mutt}
 Mutt is een opensource en tekstgebaseerde e-mailclient en is beschikbaar voor Linux en Unix.
@@ -257,4 +259,103 @@ Mutt is nu volledig ge\"{\i}nstalleerd en is klaar voor gebruik. Om Mutt op te s
 \end{center}
 	\caption{Mutt is correct ge\"{\i}nstalleerd en klaar voor gebruik}
 \end{figure}
+\newpage
+\section{Bijlage 2: Opzetten van versiebeheersysteem met Gitt}
+\subsection{Installeren van de software}
+Om Gitt te kunnen gebruiken, moet het eerst ge\"{\i}nstalleerd worden. Dit doen we door in de terminal het commando "sudo apt-get install git-core git-gui git-doc" in te geven. De terminal zal vragen naar het wachtwoord van de gebruiker. Geef dit in om verder te gaan.
+\subsection{Aanmaken SSH sleutel}
+Om een veilige verbinding te krijgen tussen GitHub en de computer, mmaakt GitHub gebruik van SSH sleutels. We dienen hiervoor dus een SSH sleutel aan te maken. In de terminal geven we "cd ~/.ssh" in om te kijken of er al een SSH sleutel bestaat op de computer. Als de terminal 'No such file or directory' op het scherm toont, wil dat zeggen dat er nog geen SSH sleutel op de computer staat. In dat geval kunnen we direct een nieuwe sleutel aanmaken. Anders dienen we eerst een back-up van de bestaande sleutel te maken en de sleutel te verwijderen. Dit doen we door de volgende commando's in te geven:
+
+
+ls
+
+
+mkdir key\_backup
+
+
+cp id\_rsa* key\_backup
+
+
+rm id\_rsa*
+
+
+Als dit gebeurd is, kunnen we een nieuwe sleutel genereren. We geven "ssh-keygen -t rsa -C "jij@jouwemailadres.com"" in. De computer zal nu een sleutel genereren. Als de sleutel aangemaakt is, zal de terminal vragen om een passphrase in te voeren. Dit is aan te raden, omdat de sleutel dan extra beveiligd is. Als de sleutel gegenereerd is, zou er iets gelijkaardigs aan figuur \ref{ssh} moeten verschijnen op het scherm.
+
+\begin{figure} [!ht]
+\begin{center}
+	\includegraphics[scale=0.5]{SSHKey}
+\end{center}
+	\caption{SSH sleutel is aangemaakt}
+	\label{ssh}
+\end{figure}
+
+Als de sleutel aangemaakt is, moet deze toegevoegd worden aan de GitHub website om een online back-up te maken van de gewijzigde bestanden. Hiervoor dient eerst een account aangemaakt te worden op de website van GitHub (www.github.com). 
+
+Eenmaal aangemeld, klik dan rechtsboen op teken langs de knop om uit te loggen. Vervolgens kiezen we links in het menu 'SSH Keys' en daarna rechtsboven 'Add SSH Key'.
+
+We gaan terug naar de Linux computer en openen de Home folder van de computer en daarna de map .ssh. Hier zou het bestand 'id-rsa.pub' moeten staan. Open dit met een tekst editor om de inhoud kopi\"{e}ren. Als de map of het bestand er niet tussen staat, druk dan CTRL + H in op het toetsenbord om verborgen bestanden weer te geven.
+
+\begin{figure} [!ht]
+\begin{center}
+	\includegraphics[scale=0.5]{SSHOpenen}
+\end{center}
+	\caption{SSH sleutel openen met een tekst editor}
+\end{figure}
+
+Kopieer de inhoud van dit document volledig en plak het dan op de GitHub website in het 'Key' veld. Klik op 'Add key' om te bevestigen.
+
+Om alles even uit te testen, vullen we in de Terminal het volgende commando in: "ssh -T git@github.com". Het is belangrijk dat git@github.com NIET veranderd wordt!
+
+Als alles correct verlopen is, zal Git je verwelkomen.
+
+\subsection{Persoonlijke informatie aanpassen}
+Om alles overzichtelijk te houden, zeker wanneer er met meerdere personen aan 1 project gewerkt wordt, is het belangrijk dat elke gebruiker zijn persoonlijke informatie zo correct mogelijk invult. Dit is mogelijk via de terminal via de volgende commando's:
+
+git config --global user.name "Voornaam Achternaam"
+
+git config --global user.email "jij@jouwemailadres.com"
+
+Als dit gebeurd is, is Git correct geconfigureerd en bijna klaar voor gebruik.
+
+\subsection{Repository aanmaken voor online back-up}
+Telkens als er gecommit wordt, slaat Git dit lokaal op. Om een online back-up te hebben, moet er ook online een opslagplaats voorzien worden. Dit doen we door naar de GitHub website te surfen, en rechts op 'New repository' te klikken.
+
+\begin{figure} [!ht]
+\begin{center}
+	\includegraphics[scale=0.5]{GitRepository}
+\end{center}
+	\caption{Online repository aanmaken voor Git}
+\end{figure}
+
+Vul alle informatie in en klik op 'Create repository'.
+
+Om er in grotere projecten nog aan uit te kunnen hoe alles precies werkt, worden vaak README's gemaakt. Om een readme aan te maken voor je project, typ dan de volgende commando's in de terminal in:
+
+mkdir ~/Projectnaam
+
+cd ~/Projectnaam
+
+git init
+
+touch README
+
+Nu is er een leeg readme bestand aangemaakt op de computer. Dit bestand dient echter nog klaargezet te worden om online opgeslagen te worden. Dit doen we door lokaal te committen. Gebruik de volgende commando's in de terminal:
+
+git add README
+
+git commit -m 'dit is mijn eerste commit'
+
+Om nu dit bestand online op te slaan voeren we onderstaande commando's in. Dit zijn tevens de commando's die gebruikt worden om je project lokaal en online te committen.
+
+git remote add origin git@github.com:gebruikersnaam/Projectnaam.git
+
+git push -u origin master
+
+Let op: het eerste commando dient slechts eenmaal ingevoerd te worden per keer dat de computer connectie heeft met GitHub.
+
+Git is nu geconfigureerd en klaar voor gebruik.
+\newpage
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{ref}
 \end{document}
